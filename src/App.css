@@ -1,38 +1,210 @@
-.App {
-  text-align: center;
-}
+/* Overall */
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+html,
+body {
+  font-family: "Oxanium", cursive;
+  height: 100%;
+  background-color: black;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+a {
+  color: inherit;
+  text-decoration: inherit;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.main-container {
+  width: 1024px;
+  height: 100%;
+  margin: 0 auto;
+  background-color: black;
+}
+
+/* Header */
+
+.header-container {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 40px;
+  height: 80px;
+  background-color: black;
+  border-bottom: 1px solid white;
+  margin-bottom: 10px;
+  color: white;
+}
+
+.header-logo {
+  height: 50px;
+}
+
+.menu-items {
+  display: flex;
+  gap: 40px;
+}
+
+.header-container a:hover {
+  font-weight: bold;
+  color: red;
+}
+
+/* Comics Page */
+
+.comics-page-nav {
+  display: flex;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.comics-page-nav div {
+  border: solid 1px white;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.all-comics-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.nav-button {
+  cursor: pointer;
+}
+
+.nav-button:hover {
+  border-color: yellow;
+}
+
+/* Comic Block */
+
+.comic-block-container {
+  background-color: whitesmoke;
+  color: black;
+  border: 1px solid black;
+  height: 250px;
+  width: 425px;
+  display: flex;
+  margin: 15px 15px 0 0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.comic-block-container img {
+  height: 250px;
+  width: 165px;
+}
+
+.comic-block-container .info {
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 12px;
+  overflow-y: scroll;
+}
+
+.comic-block-container .info .name {
+  font-weight: bold;
+  font-size: 15px;
+}
+
+/* Characters Page */
+
+.all-characters-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.characters-page-nav {
+  display: flex;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.characters-page-nav div {
+  border: solid 1px white;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+/* Character Block */
+
+.char-block-container img {
+  object-fit: cover;
+}
+
+.char-block-container {
+  box-sizing: border-box;
+}
+
+.char-block-container:hover {
+  border: 3px solid yellow;
+  cursor: pointer;
+}
+
+/* Appearances  */
+
+.appearances-overall-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.appearances-overall-container h1 {
+  font-size: 50px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.appearances-overall-container .appearances-sub-container {
+  display: flex;
+  gap: 30px;
+}
+
+.appearances-sub-container > img {
+  height: 500px;
+  width: 500px;
+  object-fit: cover;
+  border-radius: 10%;
+}
+
+.comics-list-item {
+  box-sizing: border-box;
+  display: flex;
+
+  gap: 10px;
+  padding-right: 10px;
+  margin-bottom: 10px;
+  height: 190px;
+  overflow: hidden;
+  font-size: 10px;
+}
+
+.comics-list-item div {
+  overflow: scroll;
+}
+
+.comics-list-item img {
+  height: 190px;
+}
+
+.comics-info {
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+}
+
+.comics-info .title,
+.comics-info .description {
+  font-weight: bold;
+  font-style: italic;
+  font-size: 14px;
+}
+
+.right-side h2 {
+  font-style: italic;
+  font-size: 26px;
+  margin-bottom: 10px;
 }

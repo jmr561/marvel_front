@@ -1,23 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import Home from "./pages/Home";
+import Characters from "./pages/Characters";
+import Appearances from "./pages/Appearances";
+import Comics from "./pages/Comics";
+import Faves from "./pages/Faves";
+import Header from "./components/Header";
+import "./App.css";
+
+const axios = require("axios");
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="main-container">
+      <Router>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/characters" element={<Characters />}></Route>
+          <Route
+            path="/appearances/:character"
+            element={<Appearances />}
+          ></Route>
+          <Route path="/comics" element={<Comics />}></Route>
+          <Route path="/faves" element={<Faves />}></Route>
+        </Routes>
+      </Router>
     </div>
   );
 }
