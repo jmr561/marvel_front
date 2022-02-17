@@ -1,6 +1,4 @@
 const ComicListItem = ({ element }) => {
-  console.log(element.thumbnail);
-  console.log("hi");
   return (
     <div className="comics-list-item">
       <img
@@ -13,9 +11,11 @@ const ComicListItem = ({ element }) => {
           <div>{element.title}</div>
         </div>
         {element.description ? (
-          <div>
+          <div className="desc-block">
             <div className="description">DESCRIPTION</div>
-            <div>{element.description}</div>
+            <div className="desc-text">
+              {element.description.replaceAll("<br>", "")}
+            </div>
           </div>
         ) : (
           <div></div>

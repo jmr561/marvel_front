@@ -1,19 +1,22 @@
 import { useState, useEffect } from "react";
 import ComicBlock from "../components/ComicBlock";
+import searchicon from "../assets/searchicon.png";
 
 const axios = require("axios");
 
-const Comics = () => {
+const Comics = ({ faveList, setFaveList }) => {
   const [comicsData, setComicsData] = useState({});
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
     const fetchComicsData = async () => {
       try {
         const res = await axios.get("http://localhost:3100/comics");
         setComicsData(res.data);
+        setCurrentPage(1);
         setTotalPages(Math.ceil(res.data.count / 100));
         setLoading(false);
       } catch (error) {
@@ -41,12 +44,32 @@ const Comics = () => {
     fetchComicsPageData();
   }, [currentPage]);
 
+  const handleSearchTextChange = async (e) => {
+    setSearchText(e.target.value);
+    const res = await axios.get(
+      `http://localhost:3100/comics/${e.target.value}`
+    );
+    console.log(res.data);
+    setCurrentPage(1);
+    setTotalPages(Math.ceil(res.data.count / 100));
+    setComicsData(res.data);
+  };
+
   return (
     <>
       {loading ? (
         <div>loading...</div>
       ) : (
         <>
+          <div className="search-bar-container">
+            <img src={searchicon} alt="searchicon" />
+            <input
+              type="text"
+              className="search-bar"
+              value={searchText}
+              onChange={handleSearchTextChange}
+            />
+          </div>
           <div className="comics-page-nav">
             {currentPage === 1 ? (
               <span style={{ display: "none" }}></span>
@@ -79,7 +102,14 @@ const Comics = () => {
           </div>
           <div className="all-comics-container">
             {comicsData.results.map((element, index) => {
-              return <ComicBlock key={index} info={element} />;
+              return (
+                <ComicBlock
+                  key={index}
+                  info={element}
+                  faveList={faveList}
+                  setFaveList={setFaveList}
+                />
+              );
             })}
           </div>
         </>
