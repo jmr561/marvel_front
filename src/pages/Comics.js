@@ -14,7 +14,9 @@ const Comics = ({ faveList, setFaveList }) => {
   useEffect(() => {
     const fetchComicsData = async () => {
       try {
-        const res = await axios.get("http://localhost:3100/comics");
+        const res = await axios.get(
+          "https://jmr-marvel-backend.herokuapp.com/comics"
+        );
         setComicsData(res.data);
         setCurrentPage(1);
         setTotalPages(Math.ceil(res.data.count / 100));
@@ -32,7 +34,7 @@ const Comics = ({ faveList, setFaveList }) => {
       try {
         setLoading(true);
         const res = await axios.get(
-          `http://localhost:3100/comics?currentpage=${currentPage}`
+          `https://jmr-marvel-backend.herokuapp.com/comics?currentpage=${currentPage}`
         );
         setComicsData(res.data);
         setLoading(false);
@@ -47,7 +49,7 @@ const Comics = ({ faveList, setFaveList }) => {
   const handleSearchTextChange = async (e) => {
     setSearchText(e.target.value);
     const res = await axios.get(
-      `http://localhost:3100/comics/${e.target.value}`
+      `https://jmr-marvel-backend.herokuapp.com/comics/${e.target.value}`
     );
     console.log(res.data);
     setCurrentPage(1);

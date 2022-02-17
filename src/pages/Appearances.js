@@ -16,13 +16,13 @@ const Appearances = () => {
     const fetchAppearancesData = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:3100/character/appearances/${character}`
+          `https://jmr-marvel-backend.herokuapp.com/character/appearances/${character}`
         );
         setAppearancesData(res.data);
 
         try {
           const res2 = await axios.get(
-            `http://localhost:3100/character/appearances/comics/${character}`
+            `https://jmr-marvel-backend.herokuapp.com/character/appearances/comics/${character}`
           );
           setComicsList(res2.data);
         } catch (error) {

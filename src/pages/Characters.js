@@ -15,7 +15,9 @@ const Characters = ({ faveList, setFaveList }) => {
   useEffect(() => {
     const fetchCharactersData = async () => {
       try {
-        const res = await axios.get("http://localhost:3100/characters");
+        const res = await axios.get(
+          "https://jmr-marvel-backend.herokuapp.com/characters"
+        );
         setCharactersData(res.data);
         setCurrentPage(1);
         setTotalPages(Math.ceil(res.data.count / 100));
@@ -33,7 +35,7 @@ const Characters = ({ faveList, setFaveList }) => {
       try {
         setLoading(true);
         const res = await axios.get(
-          `http://localhost:3100/characters?currentpage=${currentPage}`
+          `https://jmr-marvel-backend.herokuapp.com/characters?currentpage=${currentPage}`
         );
         setCharactersData(res.data);
         setLoading(false);
@@ -48,7 +50,7 @@ const Characters = ({ faveList, setFaveList }) => {
   const handleSearchTextChange = async (e) => {
     setSearchText(e.target.value);
     const res = await axios.get(
-      `http://localhost:3100/characters/${e.target.value}`
+      `https://jmr-marvel-backend.herokuapp.com/characters/${e.target.value}`
     );
     setCharactersData(res.data);
     setCurrentPage(1);
