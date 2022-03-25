@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import Cookies from "js-cookie";
 
 import image_not_available from "../assets/image_not_available.jpeg";
 
@@ -24,8 +23,9 @@ const CharacterBlock = ({ info, faveList, setFaveList }) => {
       if (id === e.id) {
         setFave(true);
       }
+      return null;
     });
-  }, [faveList]);
+  }, [faveList, id]);
 
   return (
     <div className="comic-block-container char-block-container">
@@ -41,6 +41,7 @@ const CharacterBlock = ({ info, faveList, setFaveList }) => {
                 if (e.id === id) {
                   return id;
                 }
+                return null;
               })
               .indexOf(id);
 

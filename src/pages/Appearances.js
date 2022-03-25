@@ -36,7 +36,7 @@ const Appearances = () => {
     };
 
     fetchAppearancesData();
-  }, []);
+  }, [character]);
 
   return (
     <>

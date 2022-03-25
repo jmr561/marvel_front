@@ -1,6 +1,5 @@
 import image_not_available from "../assets/image_not_available.jpeg";
 import { useState, useEffect } from "react";
-import Cookies from "js-cookie";
 
 const ComicBlock = ({ info, faveList, setFaveList }) => {
   const [fave, setFave] = useState(false);
@@ -19,8 +18,9 @@ const ComicBlock = ({ info, faveList, setFaveList }) => {
       if (id === e.id) {
         setFave(true);
       }
+      return null;
     });
-  }, [faveList]);
+  }, [faveList, id]);
 
   return (
     <div className="comic-block-container">
@@ -36,6 +36,7 @@ const ComicBlock = ({ info, faveList, setFaveList }) => {
                 if (e.id === id) {
                   return id;
                 }
+                return null;
               })
               .indexOf(id);
 

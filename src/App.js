@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Home from "./pages/Home";
 import Characters from "./pages/Characters";
@@ -9,8 +9,6 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import "./App.css";
 import Cookies from "js-cookie";
-
-const axios = require("axios");
 
 function App() {
   const [faveList, setFaveList] = useState([]);
@@ -24,13 +22,12 @@ function App() {
       let json_str = JSON.stringify(arr);
       Cookies.set("faveList-cookie", json_str);
     }
-  }, []);
+  }, [faveList]);
 
   useEffect(() => {
     let arr = [...faveList];
     let json_str = JSON.stringify(arr);
     Cookies.set("faveList-cookie", json_str);
-    let cookieTest = Cookies.get("faveList-cookie");
   }, [faveList]);
 
   return (

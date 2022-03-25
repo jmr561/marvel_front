@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react";
-import Cookies from "js-cookie";
+import { useState } from "react";
 
 const FaveBlock = ({
   faveList,
@@ -11,6 +10,7 @@ const FaveBlock = ({
   type,
 }) => {
   const [fave, setFave] = useState(true);
+  console.log(fave);
 
   return (
     <div className="fave-block-container">
@@ -25,12 +25,10 @@ const FaveBlock = ({
               if (e.id === id) {
                 return id;
               }
+              return null;
             })
             .indexOf(id);
-
-          console.log(index);
           arr.splice(index, 1);
-          console.log(arr);
           setFaveList(arr);
         }}
       >
