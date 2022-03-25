@@ -15,14 +15,16 @@ function App() {
 
   useEffect(() => {
     let json_str_parse = Cookies.get("faveList-cookie");
-    let cookie_arr = JSON.parse(json_str_parse);
-    setFaveList(cookie_arr);
-    if (cookie_arr !== undefined && cookie_arr.length > 0) {
-      let arr = [...faveList];
-      let json_str = JSON.stringify(arr);
-      Cookies.set("faveList-cookie", json_str);
+    if (json_str_parse) {
+      let cookie_arr = JSON.parse(json_str_parse);
+      setFaveList(cookie_arr);
+      if (cookie_arr !== undefined && cookie_arr.length > 0) {
+        let arr = [...faveList];
+        let json_str = JSON.stringify(arr);
+        Cookies.set("faveList-cookie", json_str);
+      }
     }
-  }, [faveList]);
+  }, []);
 
   useEffect(() => {
     let arr = [...faveList];
